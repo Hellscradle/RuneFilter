@@ -9,9 +9,18 @@ public enum Rarity {
 	;
 	
 	private final String rarity;
-Rarity (String r){
-	this.rarity = r;
-}
+	Rarity (String r){
+		this.rarity = r;
+	}
 
-public String toString() {return rarity;}
+	public static Rarity fromString(String str) {
+		for (Rarity r : Rarity.values()) {
+			if(r.toString().equals(str)) {
+				return r;
+			}
+		}
+		return null;
+	}
+
+	public String toString() {return rarity;}
 }

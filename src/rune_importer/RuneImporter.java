@@ -1,5 +1,6 @@
 package rune_importer;
 
+import rune.Rarity;
 import rune.Rune;
 import rune.RuneType;
 
@@ -15,7 +16,7 @@ public class RuneImporter {
 	public List<Rune> runeList;
 	private long[] mapArray;
 	private long[] mapArrayUnique;
-	private Mapper mm;
+	private Mapper mm = new Mapper();
 	
 	public RuneImporter(String filelocation){
 		loadJSON(filelocation);
@@ -27,7 +28,6 @@ public class RuneImporter {
 		//create the mapper so we can map what monsters have which runes
 		JSONParser parser = new JSONParser();
 		runeList = new ArrayList<Rune>();
-		mm = new Mapper();
 		try 
 		{
 			//open the file and parse it all
@@ -72,7 +72,6 @@ public class RuneImporter {
 			for(int i=0; i< runes.size();i++) {
 				runeList.add(jsonToRune((JSONObject)runes.get(i)));
 			}
-			mm = null;
 			
 		}
 		catch (Exception e)
@@ -84,21 +83,74 @@ public class RuneImporter {
 	//convert the JSON data to rune data and return that rune
 	private Rune jsonToRune(JSONObject jsonRune) {
 		Rune craftedRune = null;
-		int id = (int) jsonRune.get("rune_id");
-		int setid = (int) jsonRune.get("set_id");
-		RuneType type = getSet((int)setid);
+		long id = (long) jsonRune.get("rune_id");
+		long setid = (long) jsonRune.get("set_id");
+		RuneType type = getSet(setid);
+		long grade = (long) jsonRune.get("class");
+		long slot = (long) jsonRune.get("slot_no");
+		long level = (long) jsonRune.get("upgrade_curr");
+		long qualityid = (long) jsonRune.get("rank");
+		Rarity rarity = getRarity(qualityid);
+		long sellValue = (long) jsonRune.get("sell_value");
 		
+		//check if equipped and who it's equipped to
+		long occupied = (long)jsonRune.get("occupied_type");
+		boolean equipped;
+		long equippedTo;
+		String equippedName = "";
 		
+		if (occupied == 1){
+			equipped = true;
+			equippedTo = (long) jsonRune.get("occupied_id");
+		}
+		else{
+			equipped = false;
+			equippedTo = 0;
+		}
 		
+		equippedName = findName(equippedTo);
 		
 		return craftedRune;
 	}
 	
-	private RuneType getSet(int setid) {
-		RuneType t = null;
+	private String findName(long uniqueID) {
+		String name = "";
 		
-		return t;
+		//convert if not awakened
+		//convert if not awakened monster
+		for(int y=0; y < mapArray.length; y++){
+			if (mapArrayUnique[y] == uniqueID){
+				name = mm.monsterIDmap.get(Long.toString(mapArray[y]));
+				if (name == null){ 
+					int converter = (int) mapArray[y];
+					String element = getElement(converter % 10);
+					int unawakened = converter/100;
+					String monsterName = getMonsterType(Integer.toString(unawakened));
+					name = element + " " + monsterName;
+					}
+			}
+		}
+		return name;
 	}
 	
+	private RuneType getSet(long setid) {
+		return RuneType.fromString(mm.runeSetMap.get((int)setid));
+	}
+	
+	private Rarity getRarity(long q) {
+		return Rarity.fromString(mm.runeQualityMap.get((int)q));
+	}
+	
+	private String getElement(int n) {
+		return mm.monsterElementMap.get(n);	
+	}
+	
+	private String getMonsterType(String s) {
+		return mm.monsterIDmap.get(s);
+	}
+	
+	
+	public void output() {
+	}
 	
 }

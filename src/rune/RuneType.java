@@ -30,5 +30,14 @@ RuneType(String type){
 	this.type = type;
 }
 
+public static RuneType fromString(String str) {
+	for (RuneType rt : RuneType.values()) {
+		if(rt.toString().equals(str)) {
+			return rt;
+		}
+	}
+	return null;
+}
+
 public String toString() {return type;}
 }

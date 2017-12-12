@@ -21,6 +21,15 @@ StatEnum(String n){
 	this.name = n;
 }
 
+public static StatEnum fromString(String str) {
+	for (StatEnum se : StatEnum.values()) {
+		if(se.toString().equals(str)) {
+			return se;
+		}
+	}
+	return null;
+}
+
 public String toString() {return this.name;}
 
 }

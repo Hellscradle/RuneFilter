@@ -750,11 +750,11 @@ public class Mapper {
 		runeQualityMap.put(5, "Legend");
 		
 		//MONSTER ELEMENT
-		monsterElementMap.put(1, "UNIT_WATER");
-		monsterElementMap.put(2, "UNIT_FIRE");
-		monsterElementMap.put(3, "UNIT_WIND");
-		monsterElementMap.put(4, "UNIT_LIGHT");
-		monsterElementMap.put(5, "UNIT_DARK");
+		monsterElementMap.put(1, "WATER");
+		monsterElementMap.put(2, "FIRE");
+		monsterElementMap.put(3, "WIND");
+		monsterElementMap.put(4, "LIGHT");
+		monsterElementMap.put(5, "DARK");
 		
 		
 	}
