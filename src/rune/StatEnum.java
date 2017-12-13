@@ -1,15 +1,15 @@
 package rune;
 
 public enum StatEnum {
-	ATKFLAT ("FlatAtk"),
+	ATKFLAT ("Flat Atk"),
 	ATKPERCENT ("Atk %"),
-	DEFFLAT ("FlatDef"),
+	DEFFLAT ("Flat Def"),
 	DEFPERCENT ("Def %"),
-	HPFLAT ("FlatHP"),
+	HPFLAT ("Flat HP"),
 	HPPERCENT ("HP %"),
 	SPD ("Spd"),
-	CRITRATE ("CritRate"),
-	CRITDAMAGE ("CritDamage"),
+	CRITRATE ("Crit Rate"),
+	CRITDAMAGE ("Crit Damage"),
 	RESISTANCE ("Res"),
 	ACCURACY ("Acc"),
 	BLANK ("None")

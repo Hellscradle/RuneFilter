@@ -3,11 +3,11 @@ package rune_importer;
 import java.util.HashMap;
 
 public class Mapper {
-	public static HashMap<String, String> monsterIDmap = new HashMap<String, String>();
-	public static HashMap<Integer, String> runeStatMap = new HashMap<Integer, String>();
-	public static HashMap<Integer, String> runeSetMap = new HashMap<Integer, String>();
-	public static HashMap<Integer, String> runeQualityMap = new HashMap<Integer, String>();
-	public static HashMap<Integer, String> monsterElementMap = new HashMap<Integer, String>();
+	public HashMap<String, String> monsterIDmap = new HashMap<String, String>();
+	public HashMap<Integer, String> runeStatMap = new HashMap<Integer, String>();
+	public HashMap<Integer, String> runeSetMap = new HashMap<Integer, String>();
+	public HashMap<Integer, String> runeQualityMap = new HashMap<Integer, String>();
+	public HashMap<Integer, String> monsterElementMap = new HashMap<Integer, String>();
 
 
 	
@@ -706,17 +706,17 @@ public class Mapper {
 		
 		
 		//RUNE EFFECT MAPPING
-		runeStatMap.put(1, "FlatHP");
+		runeStatMap.put(1, "Flat HP");
 		runeStatMap.put(2, "HP %");
-		runeStatMap.put(3, "FlatAtk");
+		runeStatMap.put(3, "Flat Atk");
 		runeStatMap.put(4, "Atk %");
-		runeStatMap.put(5, "FlatDef");
+		runeStatMap.put(5, "Flat Def");
 		runeStatMap.put(6, "Def %");
 		runeStatMap.put(7, "WEHAVENOIDEA");
 		runeStatMap.put(8, "Spd");
-		runeStatMap.put(9, "CritRate");
-		runeStatMap.put(10, "CritDamage");
-		runeStatMap.put(11, "Red");
+		runeStatMap.put(9, "Crit Rate");
+		runeStatMap.put(10, "Crit Damage");
+		runeStatMap.put(11, "Res");
 		runeStatMap.put(12, "Acc");
 		
 		//RUNE SET MAPPING

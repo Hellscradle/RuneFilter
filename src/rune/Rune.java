@@ -27,15 +27,14 @@ public class Rune {
 	private boolean markedForSale; 
 	
 	//full initialization
-	public Rune(int id, int slot, int quality, RuneType type, Rarity rarity,
+	public Rune(int id, int slot, RuneType type, Rarity rarity,
 			Stat main, Stat imp, Stat one, Stat two, Stat three, Stat four,
-			boolean equipped, String euippedTo, float runeEff, float runeMaxEff){
+			boolean equipped, String equippedTo, int sellvalue, boolean markedForSale){
 	
 		this.rune_id = id;
 		this.rune_type = type;
 		this.rune_slot = slot;
 		this.rune_rarity = rarity;
-		this.quality = quality;
 		this.mainStat = main;
 		this.implicitStat = imp;
 		this.statOne = one;
@@ -44,8 +43,8 @@ public class Rune {
 		this.statFour = four;
 		this.equipped = equipped;
 		this.equippedTo = equippedTo;
-		this.runeEfficiency = runeEff;
-		this.runeMaxEfficiency = runeMaxEff;
+		this.sellValue = sellValue;
+		this.markedForSale = markedForSale;
 	}
 	//use to initialize later
 	public Rune(){
@@ -118,6 +117,12 @@ public class Rune {
 	}
 	
 	//retrieve values
+	public int getRuneID() {return rune_id;}
+	public RuneType getRuneType() {return rune_type;}
+	public int getRuneSlot() {return rune_slot;}
+	public Rarity getRuneRarity() {return rune_rarity;}
+	public int getQuality() {return quality;}	
+	
 	public Stat getMainStat() {return mainStat;}
 	public Stat getImplicitStat() {return implicitStat;}
 	public Stat getStatOne() {return statOne;}
@@ -125,31 +130,45 @@ public class Rune {
 	public Stat getStatThree() {return statThree;}
 	public Stat getStatFour() {return statFour;}
 	
+	public boolean getEquipped() {return equipped;}
+	public String getEquippedTo() {return equippedTo;}
+	public float getRuneEfficiency() {return runeEfficiency;}
+	public float getRuneMaxEff() {return runeMaxEfficiency;}
+	
+	public int getSellValue() {return sellValue;}
+	public boolean getForSale() {return markedForSale;}
+	
 	//display rune
 	public void displayRune() {
 		System.out.println("Rune Type: " + rune_type.toString() + " Rune Slot: " + rune_slot);
-		System.out.println("Rune Rarity: " + rune_rarity.toString() + " Rune Quality: " + quality);
+		System.out.println("Rune Rarity: " + rune_rarity.toString());
 		if (equipped) {
 			System.out.println("Equipped to " + equippedTo);
 		}else {
 			System.out.println("Rune in storage");
 		}
 		if(mainStat != null) {
+			System.out.println("Main Stat:");
 			mainStat.displayStat();
 		}
 		if(implicitStat != null) {
+			System.out.println("Implicit Stat:");
 			implicitStat.displayStat();
 		}
 		if(statOne != null) {
+			System.out.println("Stat 1:");
 			statOne.displayStat();
 		}
 		if(statTwo != null) {
+			System.out.println("Stat 2:");
 			statTwo.displayStat();
 		}
 		if(statThree != null) {
+			System.out.println("Stat 3:");
 			statThree.displayStat();
 		}
 		if(statFour != null) {
+			System.out.println("Stat 4:");
 			statFour.displayStat();
 		}
 	}

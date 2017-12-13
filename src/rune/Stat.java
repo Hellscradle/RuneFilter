@@ -44,11 +44,13 @@ public class Stat {
 	
 	//display the stats
 	public void displayStat() {
-		System.out.println("Stat: " + statType.toString());
-		System.out.println("Value: " + statValue);
-		System.out.println("Enchanted: " + enchanted);
-		System.out.println("Grind Stoned: " + grinded);
+		System.out.println(statType.toString()+ ", " + statValue);
+		if(enchanted) {
+			System.out.println("Enchanted: " + enchanted);
+		}
+
 		if (grinded) {
+			System.out.println("Grind Stoned: " + grinded);
 			System.out.println("Grindstone Amount: " + grindValue);
 		}
 	}
