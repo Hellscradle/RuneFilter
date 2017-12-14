@@ -6,13 +6,16 @@ public class Stat {
 	private boolean grinded;
 	private float grindValue;
 	private boolean enchanted;
+	// 0 = main, 5 = implicit, 1-4 = substat location
+	private int statLocation;
 	
-	public Stat(StatEnum type, float value, boolean grind, float grindValue, boolean enchanted){
+	public Stat(StatEnum type, float value, boolean grind, float grindValue, boolean enchanted,int statLocation){
 		this.statType = type;
 		this.statValue = value;
 		this.grinded = grind;
 		this.grindValue = grindValue;
 		this.enchanted = enchanted;
+		this.statLocation = statLocation;
 	}
 	
 	public Stat(){
@@ -36,11 +39,16 @@ public class Stat {
 		this.enchanted = ench;
 	}
 	
+	public void setStatLocation(int i) {
+		this.statLocation = i;
+	}
+	
 	public float getValue() {return statValue;}
 	public StatEnum getType() {return statType;}
 	public boolean getIsGrinded() {return grinded;}
 	public float getGrindValue() {return grindValue;}
 	public boolean getEncchanted() {return enchanted;}
+	public int getStatLocation() {return statLocation;}
 	
 	//display the stats
 	public void displayStat() {

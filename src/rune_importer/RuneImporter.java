@@ -113,11 +113,13 @@ public class RuneImporter {
 		equippedName = findName(equippedTo);
 		
 		//get the stats
+		List<Stat> statList = new ArrayList<Stat>();
 		JSONArray mainStatArray = (JSONArray)jsonRune.get("pri_eff");
 		long ms = (long)mainStatArray.get(0);
 		StatEnum mainType = StatEnum.fromString(mm.runeStatMap.get((int)ms));
 		long mainValue = (long)mainStatArray.get(1);
-		Stat mainStat = new Stat(mainType, mainValue, false, 0f, false);
+		Stat mainStat = new Stat(mainType, mainValue, false, 0f, false, 0);
+		statList.add(mainStat);
 		JSONArray implicitStatArray = (JSONArray)jsonRune.get("prefix_eff");
 		long is = (long)implicitStatArray.get(0);
 		StatEnum implicitType = null;
@@ -126,16 +128,13 @@ public class RuneImporter {
 		if(is != 0) {
 			implicitType = StatEnum.fromString(mm.runeStatMap.get((int)is));
 			implicitValue = (long)implicitStatArray.get(1);
-			implicitStat = new Stat(implicitType, implicitValue, false, 0f, false);
-		}
+			implicitStat = new Stat(implicitType, implicitValue, false, 0f, false,5);
+			statList.add(implicitStat);
+		}		
 		
-		Stat s1=null;
-		Stat s2=null;
-		Stat s3=null;
-		Stat s4=null;
-
 		JSONArray subs = (JSONArray)jsonRune.get("sec_eff");
 		for(int z = 0; z <subs.size();z++) {
+			
 			JSONArray tmpSub = (JSONArray)subs.get(z);
 			StatEnum tmpType = StatEnum.fromString(mm.runeStatMap.get((int)(long)tmpSub.get(0)));
 			long tmpValue = (long) tmpSub.get(1);
@@ -145,27 +144,13 @@ public class RuneImporter {
 			boolean tmpEnch;
 			if(tmpEnchVal == 1) {tmpEnch = true;} else {tmpEnch = false;}
 			if(tmpGrind != 0) {tmpGrinded = true;} else {tmpGrinded = false;}
-			
-			Stat tmpStat = new Stat(tmpType, (float)tmpValue, tmpGrinded, (float)tmpGrind, tmpEnch);
-			tmpStat.displayStat();
-			
-			if(z == 0) {
-				s1 = tmpStat;
-			}else if (z == 1) {
-				s2 = tmpStat;
-			}else if (z == 2) {
-				s3 = tmpStat;
-			}else if (z == 3) {
-				s4 = tmpStat;
-			}
-			
+			//System.out.println(z);
+			statList.add(new Stat(tmpType, (float)tmpValue, tmpGrinded, (float)tmpGrind, tmpEnch, z+1));			
 		}	
 
 		craftedRune = new Rune((int)id,(int)slot,type,rarity,
-				mainStat,implicitStat,s1,s2,s3,s4, 
+				mainStat,implicitStat,statList,
 				equipped, equippedName, (int)sellValue, false);
-		
-		craftedRune.displayRune();
 		return craftedRune;
 	}
 	
