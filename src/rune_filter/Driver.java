@@ -5,19 +5,20 @@ import java.util.List;
 import rune.*;
 import rune_importer.RuneImporter;
 
+
+
 public class Driver {
 
 	public static void main(String[] args) {
-		RuneImporter ri = new RuneImporter("JSONFolder/HellscradleNew.json");
+		RuneImporter ri = new RuneImporter("ResourcesFolder/HellscradleNew.json");
 		List<Rune> runeList = ri.runeList;
-		FilteringProperties filter = new FilteringProperties();
+		Filter filter = new Filter();
 		
 		
 		for(int i=0; i< runeList.size();i++) {
-			//runeList.get(i).displayRune();
-			boolean hasSpeed = filter.hasSubStat(runeList.get(i), StatEnum.SPD);
-			if(hasSpeed) {
-				runeList.get(i).displayRune();
+			boolean bool = filter.hasPrimaryStat(runeList.get(i), StatEnum.SPD);
+			if(bool) {
+				System.out.println(runeList.get(i).getStat(0).getType().toString());
 			}
 		}
 		

@@ -1,0 +1,6 @@
+rune_id,0
+rune_type,Fatal,Blade,Rage,Violent,Despair
+rune_slot,2,6
+rune_rarity,Hero
+grade,6
+runeLevel,0,15

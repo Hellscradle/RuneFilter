@@ -9,7 +9,9 @@ public class Rune {
 	private RuneType rune_type;
 	private int rune_slot;
 	private Rarity rune_rarity;
-	private int quality;
+	//quality = star rating
+	private int grade;
+	private int runeLevel;
 	
 	//stat array - rebuild 
 	List<Stat> stats = new ArrayList<Stat>();
@@ -25,7 +27,7 @@ public class Rune {
 	private boolean markedForSale; 
 	
 	//full initialization
-	public Rune(int id, int slot, RuneType type, Rarity rarity,
+	public Rune(int id, int slot, RuneType type, Rarity rarity, int grade, int level,
 			Stat main, Stat imp, List<Stat> newStats,
 			boolean equipped, String equippedTo, int sellvalue, boolean markedForSale){
 	
@@ -33,7 +35,9 @@ public class Rune {
 		this.rune_type = type;
 		this.rune_slot = slot;
 		this.rune_rarity = rarity;
+		this.runeLevel = level;
 		this.equipped = equipped;
+		this.grade = grade;
 		this.equippedTo = equippedTo;
 		this.sellValue = sellValue;
 		this.markedForSale = markedForSale;
@@ -62,8 +66,8 @@ public class Rune {
 		this.rune_rarity = rarity;
 	}
 	
-	public void setRuneQuality(int quality) {
-		this.quality = quality;
+	public void setRuneGrade(int grade) {
+		this.grade = grade;
 		
 	}
 		
@@ -91,13 +95,15 @@ public class Rune {
 		markedForSale = sell;
 	}
 	
+	public void setLevel(int v) {this.runeLevel = v;}
+	
 	//retrieve values
 	public int getRuneID() {return rune_id;}
 	public RuneType getRuneType() {return rune_type;}
 	public int getRuneSlot() {return rune_slot;}
 	public Rarity getRuneRarity() {return rune_rarity;}
-	public int getQuality() {return quality;}	
-	
+	public int getGrade() {return grade;}	
+	public int getLevel() {return runeLevel;}
 	public int getStatListSize() {return stats.size();}
 	
 	//retrieve stats
@@ -135,9 +141,6 @@ public class Rune {
 				System.out.println("Primary Stat");
 			}else if (loc == 5) {
 				System.out.println("Implicit Stat");
-			}
-			else {
-				System.out.println("Sub Stat " + loc);
 			}
 			stats.get(i).displayStat();
 		}
