@@ -743,6 +743,7 @@ public class Mapper {
 		runeSetMap.put(23, "Tolerance");		
 		
 		//RUNE QUALITY MAPPING
+		runeQualityMap.put(0, "Unknown");
 		runeQualityMap.put(1, "Normal");
 		runeQualityMap.put(2, "Magic");
 		runeQualityMap.put(3, "Rare");

@@ -1,6 +1,7 @@
 package rune;
 
 public enum Rarity {
+	UNKNOWN ("Unknown"),
 	NORMAL ("Normal"),
 	MAGIC ("Magic"),
 	RARE ("Rare"),

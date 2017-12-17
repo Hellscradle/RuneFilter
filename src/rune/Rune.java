@@ -9,6 +9,7 @@ public class Rune {
 	private RuneType rune_type;
 	private int rune_slot;
 	private Rarity rune_rarity;
+	private Rarity original_rarity;
 	//quality = star rating
 	private int grade;
 	private int runeLevel;
@@ -27,7 +28,7 @@ public class Rune {
 	private boolean markedForSale; 
 	
 	//full initialization
-	public Rune(int id, int slot, RuneType type, Rarity rarity, int grade, int level,
+	public Rune(int id, int slot, RuneType type, Rarity rarity,Rarity original, int grade, int level,
 			Stat main, Stat imp, List<Stat> newStats,
 			boolean equipped, String equippedTo, int sellvalue, boolean markedForSale){
 	
@@ -35,6 +36,7 @@ public class Rune {
 		this.rune_type = type;
 		this.rune_slot = slot;
 		this.rune_rarity = rarity;
+		this.original_rarity = original;
 		this.runeLevel = level;
 		this.equipped = equipped;
 		this.grade = grade;

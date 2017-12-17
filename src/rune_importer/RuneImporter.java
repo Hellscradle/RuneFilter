@@ -93,6 +93,8 @@ public class RuneImporter {
 		long level = (long) jsonRune.get("upgrade_curr");
 		long qualityid = (long) jsonRune.get("rank");
 		Rarity rarity = getRarity(qualityid);
+		long originalQuality = (long)jsonRune.get("extra");
+		Rarity original = getRarity(originalQuality);
 		long sellValue = (long) jsonRune.get("sell_value");
 		
 		//check if equipped and who it's equipped to
@@ -148,7 +150,7 @@ public class RuneImporter {
 			statList.add(new Stat(tmpType, (float)tmpValue, tmpGrinded, (float)tmpGrind, tmpEnch, z+1));			
 		}	
 
-		craftedRune = new Rune((int)id,(int)slot,type,rarity,(int)grade,(int)level,
+		craftedRune = new Rune((int)id,(int)slot,type,rarity,original,(int)grade,(int)level,
 				mainStat,implicitStat,statList,
 				equipped, equippedName, (int)sellValue, false);
 		return craftedRune;

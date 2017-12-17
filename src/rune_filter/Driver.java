@@ -16,9 +16,9 @@ public class Driver {
 		
 		
 		for(int i=0; i< runeList.size();i++) {
-			boolean bool = filter.hasPrimaryStat(runeList.get(i), StatEnum.SPD);
+			boolean bool = filter.isRarity(runeList.get(i), Rarity.LEGEND);
 			if(bool) {
-				System.out.println(runeList.get(i).getStat(0).getType().toString());
+				System.out.println(runeList.get(i).getRuneRarity().toString());
 			}
 		}
 		

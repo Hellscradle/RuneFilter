@@ -18,13 +18,23 @@ public class Filter {
 	//check rune type
 	public boolean isRuneType(Rune rune, RuneType type) {
 		boolean bool = false;
-		if(rune.getRuneType().toString().equals(type.toString())) {bool = true;}
+		if(rune.getRuneType() == type) {bool = true;}
 		return bool;
 	}
 	
 	//check rune slot
-	//check rune rarity
+	public boolean isSlot(Rune rune, int slot) {
+		boolean bool = false;
+		if(rune.getRuneSlot() == slot) {bool = true;}
+		return bool;
+	}
 	
+	//check rune rarity
+	public boolean isRarity(Rune rune, Rarity rarity) {
+		boolean bool = false;
+		if(rune.getRuneRarity() == rarity) {bool = true;}
+		return bool;
+	}
 	
 	//check rune level
 	public boolean isBetweenLevels(Rune rune, int min, int max) {
@@ -38,7 +48,7 @@ public class Filter {
 	//check for primary stat
 	public boolean hasPrimaryStat(Rune rune, StatEnum e) {
 		boolean bool = false;
-		if(rune.getStat(0).getType().toString().equals(e.toString())) {
+		if(rune.getStat(0).getType() == e) {
 			bool = true;
 		}
 		return bool;
