@@ -12,16 +12,15 @@ public class Driver {
 	public static void main(String[] args) {
 		RuneImporter ri = new RuneImporter("ResourcesFolder/HellscradleNew.json");
 		List<Rune> runeList = ri.runeList;
-		Filter filter = new Filter();
+		PredefinedFilter filter = new PredefinedFilter();
+		EfficiencyCalculator eff = new EfficiencyCalculator();
 		
-		
-		for(int i=0; i< runeList.size();i++) {
-			boolean bool = filter.isRarity(runeList.get(i), Rarity.LEGEND);
-			if(bool) {
-				System.out.println(runeList.get(i).getRuneRarity().toString());
-			}
+		for(int i=0; i<runeList.size();i++) {
+			System.out.println(runeList.get(i).getEquippedTo());
+			System.out.println("Efficiency = " + eff.calcCurrent(runeList.get(i))*100f + "%");
 		}
 		
+		
+		
 	}
-
 }

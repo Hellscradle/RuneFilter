@@ -10,7 +10,7 @@ public class Rune {
 	private int rune_slot;
 	private Rarity rune_rarity;
 	private Rarity original_rarity;
-	//quality = star rating
+	//grade = star rating
 	private int grade;
 	private int runeLevel;
 	
@@ -22,6 +22,7 @@ public class Rune {
 	private String equippedTo;
 	private float runeEfficiency;
 	private float runeMaxEfficiency;
+	private float barionRuneEfficiency;
 	
 	//could be relevant
 	private int sellValue;

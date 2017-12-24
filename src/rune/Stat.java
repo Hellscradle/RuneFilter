@@ -47,7 +47,7 @@ public class Stat {
 	public StatEnum getType() {return statType;}
 	public boolean getIsGrinded() {return grinded;}
 	public float getGrindValue() {return grindValue;}
-	public boolean getEncchanted() {return enchanted;}
+	public boolean getEnchanted() {return enchanted;}
 	public int getStatLocation() {return statLocation;}
 	
 	//display the stats
