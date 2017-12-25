@@ -130,8 +130,8 @@ public class Rune {
 	//display rune
 	public void displayRune() {
 		System.out.println("-----------------------------------");
-		System.out.println("Rune Type: " + rune_type.toString() + " Rune Slot: " + rune_slot);
-		System.out.println("Rune Rarity: " + rune_rarity.toString());
+		System.out.println("Type: " + rune_type.toString() + " - Slot: " + rune_slot);
+		System.out.println("Rarity: " + rune_rarity.toString() + " - Efficiency: " + runeEfficiency + " - Max Efficiency: " + runeMaxEfficiency);
 		if (equipped) {
 			System.out.println("Equipped to " + equippedTo);
 		}else {

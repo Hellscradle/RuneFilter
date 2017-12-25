@@ -1,5 +1,6 @@
 package rune_importer;
 
+import rune.EfficiencyCalculator;
 import rune.Rarity;
 import rune.Rune;
 import rune.RuneType;
@@ -19,6 +20,7 @@ public class RuneImporter {
 	private long[] mapArray;
 	private long[] mapArrayUnique;
 	private Mapper mm = new Mapper();
+	private EfficiencyCalculator ec = new EfficiencyCalculator();
 	
 	public RuneImporter(String filelocation){
 		loadJSON(filelocation);
@@ -79,6 +81,11 @@ public class RuneImporter {
 		catch (Exception e)
 		{
 			e.printStackTrace();
+		}
+		
+		for(int i=0;i< runeList.size();i++) {
+			runeList.get(i).setEfficiency(ec.calcCurrent(runeList.get(i)));
+			runeList.get(i).setMaxEfficiency(ec.calcMax(runeList.get(i)));
 		}
 		
 	}

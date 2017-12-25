@@ -55,8 +55,35 @@ public class EfficiencyCalculator {
 		return eff;
 	}
 	
+	//5* Rune max is a rough estimate based on an average the substats can roll
+	//Note that if a rune has atk%, def%, hp% subs it's much closer to 6*
+	//compared to a rune with flat atk or hp
 	public float calcMax(Rune r) {
 		float eff = 0f;
+		float runeGradeMulti = calcMultiplier(r);
+		
+		float subTotal = 0f;
+		for(int i=1;i<r.getStatListSize();i++) {
+			subTotal += calculateSub(r.getStat(i));
+		}
+		
+		int lvl= r.getLevel();
+		int grade = r.getGrade();
+		float tmpAdd = 0f;
+		if(lvl < 3) {
+			tmpAdd += 0.8;
+		}else if(lvl > 3 && lvl < 6) {
+			tmpAdd += 0.6;
+		}else if(lvl > 6 && lvl < 9) {
+			tmpAdd += 0.4;
+		}else if(lvl > 9 && lvl < 12) {
+			tmpAdd += 0.2;
+		}
+		if(grade == 5) {
+			tmpAdd = tmpAdd*0.82f;
+		}
+		
+		eff = ((subTotal + tmpAdd)+runeGradeMulti)/(2.8f);
 		
 		return eff;
 	}

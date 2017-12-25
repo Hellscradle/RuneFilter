@@ -13,12 +13,15 @@ public class Driver {
 		RuneImporter ri = new RuneImporter("ResourcesFolder/HellscradleNew.json");
 		List<Rune> runeList = ri.runeList;
 		PredefinedFilter filter = new PredefinedFilter();
-		EfficiencyCalculator eff = new EfficiencyCalculator();
 		
 		for(int i=0; i<runeList.size();i++) {
-			System.out.println(runeList.get(i).getEquippedTo());
-			System.out.println("Efficiency = " + eff.calcCurrent(runeList.get(i))*100f + "%");
-		}
+			if(filter.checkRune(runeList.get(i))) {
+				if(filter.checkSynergy(runeList.get(i))){
+					System.out.println("Rune is good");
+					runeList.get(i).displayRune();
+				}
+			}
+		}	
 		
 		
 		
