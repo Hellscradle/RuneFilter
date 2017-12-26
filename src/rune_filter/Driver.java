@@ -15,12 +15,7 @@ public class Driver {
 		PredefinedFilter filter = new PredefinedFilter();
 		
 		for(int i=0; i<runeList.size();i++) {
-			if(filter.checkRune(runeList.get(i))) {
-				if(filter.checkSynergy(runeList.get(i))){
-					System.out.println("Rune is good");
-					runeList.get(i).displayRune();
-				}
-			}
+			runeList.get(i).displayRune();
 		}	
 		
 		

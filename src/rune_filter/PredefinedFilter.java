@@ -16,9 +16,9 @@ public class PredefinedFilter {
 	public boolean checkRune(Rune rune) {
 		//check if legendary or at least a 6* Hero rune. Returns true if it is
 		
-		if(filter.isRarity(rune, Rarity.LEGEND) && rune.getRuneMaxEff() > 0.90f) {
+		if(filter.isRarity(rune, Rarity.LEGEND) && rune.getRuneMaxEff() > 0.85f) {
 			return true;	
-		}else if(filter.isRarity(rune, Rarity.HERO) && filter.isGrade(rune, 6, 6) && rune.getRuneMaxEff() > 0.90f) {
+		}else if(filter.isRarity(rune, Rarity.HERO) && filter.isGrade(rune, 6, 6) && rune.getRuneMaxEff() > 0.85f) {
 			return true;
 		}else {
 			return false;

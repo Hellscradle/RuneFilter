@@ -58,11 +58,11 @@ public class Rune {
 	}
 	
 	public void setRuneType(RuneType type) {
-		
+		this.rune_type = type;
 	}
 	
 	public void setRuneSlot(int slot) {
-		
+		this.rune_slot = slot;
 	}
 	
 	public void setRuneRarity(Rarity rarity) {
