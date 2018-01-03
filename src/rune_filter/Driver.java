@@ -9,7 +9,7 @@ import rune_importer.RuneImporter;
 
 public class Driver {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		RuneImporter ri = new RuneImporter("ResourcesFolder/HellscradleNew.json");
 		List<Rune> runeList = ri.runeList;
 		PredefinedFilter filter = new PredefinedFilter();
@@ -20,5 +20,5 @@ public class Driver {
 		
 		
 		
-	}
+	}*/
 }
