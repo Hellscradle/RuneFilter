@@ -148,7 +148,6 @@ public class Rune {
 			stats.get(i).displayStat();
 		}
 		System.out.println("-----------------------------------");
-
 	}
 	
 }
