@@ -2,8 +2,8 @@ package rune_runtime;
 
 import java.util.*;
 import java.io.*;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import rune.*;
 
 
 public class LiveRuneReader {
@@ -24,6 +24,7 @@ public class LiveRuneReader {
 	private int rainbow3;	
 	
 	private boolean isRune;
+	private Rune currentRune;
 	private int runeTotal;
 	private int runeKept;
 	
@@ -43,6 +44,7 @@ public class LiveRuneReader {
 		rainbow2 = 0;
 		rainbow3 = 0;
 		isRune = false;
+		currentRune = null;
 	}
 	
 	TimerTask task = new LiveChangeCheck(new File("D:/Programs/SW Data/Hellscradle-17090016-runs.csv")) {
@@ -51,14 +53,10 @@ public class LiveRuneReader {
 				String[] lastDrop;
 				LiveParser lp = new LiveParser();
 				lastDrop = lp.parseValue(getLastLine(file),",");
-				
-				/*for(int i=0; i<lastDrop.length;i++) {
-					System.out.println(lastDrop[i]);
+				logType(lastDrop[7]);
+				if(isRune) {
+					currentRune = makeRune(lastDrop);
 				}
-				System.out.println("---------------");
-				System.out.println("");*/
-				//System.out.print(checkIfRune(lastDrop[7]));
-				
 				
 
 			} catch (IOException e) {
@@ -253,7 +251,7 @@ public class LiveRuneReader {
 				unknownScrolls += 11;
 				isRune = false;
 				break;
-			case "Unknown Scroll x12":
+			case "Unknown I fought a tScroll x12":
 				unknownScrolls += 12;
 				isRune = false;
 				break;
@@ -266,8 +264,43 @@ public class LiveRuneReader {
 		}
 	}
 	
-	private void makeRune() {
+	private Rune makeRune(String[] str) {
+		Rune madeRune = new Rune();
 		
+		//get the rune information
+		//slot
+		int madeSlot = 0;
+		//rune type
+		RuneType madeType = null;
+		//rune rarity
+		Rarity madeRarity = null;
+		//primary stat
+		Stat madePrim = null;
+		//implicit
+		Stat madeImp = null;
+		//List for subs
+		List<Stat> stats = new ArrayList<Stat>();
+		//sub 1
+		Stat madeS1 = null;
+		//sub 2
+		Stat madeS2 = null;;
+		//sub 3
+		Stat madeS3 = null;;
+		//sub 4
+		Stat madeS4 = null;;
+		//rune price
+		int madePrice = 0;
+		
+		stats.add(madeS1);
+		stats.add(madeS2);
+		stats.add(madeS3);
+		stats.add(madeS4);
+		
+		madeRune = new Rune(0,madeSlot,madeType,madeRarity,madeRarity,0,0,
+				madePrim,madeImp,stats,
+				false,"",madePrice,false);
+		
+		return madeRune;
 	}
 	
 	public void showRunningTotals() {
