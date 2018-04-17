@@ -36,9 +36,6 @@ public class PredefinedFilter {
 			if(checkAttacker(rune)) {
 				return true;
 			}
-			if(checkSupport(rune)) {
-				return true;
-			}
 			if(checkBruiser(rune)) {
 				return true;
 			}
@@ -192,7 +189,7 @@ public class PredefinedFilter {
 				if(filter.hasSubStat(rune, StatEnum.SPD)) {
 					counter++;
 				}
-				if(counter >= 3) {
+				if(counter >= 2) {
 					syn = true;
 				}
 			}

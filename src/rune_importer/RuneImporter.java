@@ -157,8 +157,7 @@ public class RuneImporter {
 			statList.add(new Stat(tmpType, (float)tmpValue, tmpGrinded, (float)tmpGrind, tmpEnch, z+1));			
 		}	
 
-		craftedRune = new Rune((int)id,(int)slot,type,rarity,original,(int)grade,(int)level,
-				mainStat,implicitStat,statList,
+		craftedRune = new Rune((int)id,(int)slot,type,rarity,original,(int)grade,(int)level,statList,
 				equipped, equippedName, (int)sellValue, false);
 		return craftedRune;
 	}

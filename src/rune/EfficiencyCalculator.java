@@ -1,7 +1,5 @@
 package rune;
 
-import rune_filter.FilterFunctions;
-
 public class EfficiencyCalculator {
 	
 	//substat max rolls

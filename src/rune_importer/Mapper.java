@@ -696,11 +696,28 @@ public class Mapper {
 		monsterIDmap.put("21813", "Louise");
 		monsterIDmap.put("21814", "Jeanne");
 		monsterIDmap.put("21815", "Leona");
+		monsterIDmap.put("219", "Chakram Dancer");
+		monsterIDmap.put("21911", "Tailia");
+		monsterIDmap.put("21912", "Shaina");
+		monsterIDmap.put("21913", "Melissa");
+		monsterIDmap.put("21914", "Deva");
+		monsterIDmap.put("21915", "Belita");
+		monsterIDmap.put("220", "Boomerang Warrior");
+		monsterIDmap.put("22011", "Sabrina");
+		monsterIDmap.put("22012", "Maruna");
+		monsterIDmap.put("22013", "Zenobia");
+		monsterIDmap.put("22014", "Bailey");
+		monsterIDmap.put("22015", "Martina");
+		
+		
+		
 		monsterIDmap.put("15105", "Devilmon");
 		monsterIDmap.put("14314", "Rainbowmon");
+		
 		monsterIDmap.put("1000111", "Homunculus - Attack (Water)");
 		monsterIDmap.put("1000112", "Homunculus - Attack (Fire)");
 		monsterIDmap.put("1000113", "Homunculus - Attack (Wind)");
+		
 		monsterIDmap.put("1000214", "Homunculus - Support (Light)");
 		monsterIDmap.put("1000215", "Homunculus - Support (Dark)");
 		

@@ -7,7 +7,6 @@ public abstract class LiveChangeCheck extends TimerTask{
 
 	private long timeStamp;
 	private File file;
-	private boolean changed;
 	
 	public LiveChangeCheck(File file) {
 		this.file = file;

@@ -22,16 +22,15 @@ public class Rune {
 	private String equippedTo;
 	private float runeEfficiency;
 	private float runeMaxEfficiency;
-	private float barionRuneEfficiency;
+	//private float barionRuneEfficiency;
 	
 	//could be relevant
 	private int sellValue;
 	private boolean markedForSale; 
 	
 	//full initialization
-	public Rune(int id, int slot, RuneType type, Rarity rarity,Rarity original, int grade, int level,
-			Stat main, Stat imp, List<Stat> newStats,
-			boolean equipped, String equippedTo, int sellvalue, boolean markedForSale){
+	public Rune(int id, int slot, RuneType type, Rarity rarity,Rarity original, int grade, int level, List<Stat> newStats,
+			boolean equipped, String equippedTo, int sellValue, boolean markedForSale){
 	
 		this.rune_id = id;
 		this.rune_type = type;
@@ -105,6 +104,7 @@ public class Rune {
 	public RuneType getRuneType() {return rune_type;}
 	public int getRuneSlot() {return rune_slot;}
 	public Rarity getRuneRarity() {return rune_rarity;}
+	public Rarity getOriginalRuneRarity() {return original_rarity;}
 	public int getGrade() {return grade;}	
 	public int getLevel() {return runeLevel;}
 	public int getStatListSize() {return stats.size();}
