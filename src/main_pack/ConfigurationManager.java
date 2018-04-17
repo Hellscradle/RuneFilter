@@ -59,5 +59,6 @@ public class ConfigurationManager {
 		location = in.readLine();
 		in.readLine();
 		csv = in.readLine();
+		in.close();
 	}
 }
