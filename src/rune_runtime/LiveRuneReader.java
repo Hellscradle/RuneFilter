@@ -30,14 +30,16 @@ public class LiveRuneReader {
 	private int runeTotal;
 	private int runeKept;
 	private boolean keepRune;
+	private boolean win;
 	
 	boolean predefinedFilter;
 	boolean customFilter;
 	PredefinedFilter defaultFilter;
 	
 	int displayLevel;
+	boolean writeLog;
 	
-	public LiveRuneReader(boolean predefined, boolean custom, int displayLevel) {
+	public LiveRuneReader(boolean predefined, boolean custom, int displayLevel, boolean write) {
 		symbolH = 0;
 		symbolT = 0;
 		symbolC = 0;
@@ -60,7 +62,9 @@ public class LiveRuneReader {
 		runeTotal = 0;
 		runeKept = 0;
 		this.displayLevel = displayLevel;
-		defaultFilter = new PredefinedFilter();		
+		defaultFilter = new PredefinedFilter();	
+		writeLog = write;
+		win = false;
 	}
 	
 	TimerTask task = new LiveChangeCheck(new File("D:/Programs/SW Data/Hellscradle-17090016-runs.csv")) {
@@ -76,7 +80,8 @@ public class LiveRuneReader {
 				if(isRune) {
 					runeTotal += 1;
 					currentRune = makeRune(lastDrop);
-					//currentRune.displayRune();
+					System.out.println("Rune Base Eff: " + currentRune.getRuneEfficiency());
+					System.out.println("Rune Max Eff: " + currentRune.getRuneMaxEff());
 					if(predefinedFilter) {
 						if(defaultFilter.checkRune(currentRune)) {
 							if(defaultFilter.checkSynergy(currentRune)) {
@@ -99,7 +104,20 @@ public class LiveRuneReader {
 						manaFromSelling += currentRune.getSellValue();
 					}
 				}
-				
+				if(writeLog) {
+					if(isRune) {
+						if(keepRune) {
+							
+							writeToLog("Keep");
+						}else {
+							writeToLog("Sell");
+						}
+					}else if(win = true){
+						writeToLog("Other");
+					}else if(win = false) {
+						writeToLog("Loss");
+					}
+				}
 				
 				runs++;
 				mana += Integer.parseInt(lastDrop[4]);
@@ -330,6 +348,11 @@ public class LiveRuneReader {
 			madeRarity = Rarity.LEGEND;
 		}
 		
+		if(str[2].equals("Lost")) {
+			win = false;
+		}else {
+			win = true;
+		}
 		//rune price
 		int madePrice = Integer.parseInt(str[9]);
 		
@@ -442,19 +465,21 @@ public class LiveRuneReader {
 	public int getRunesSold() {return (runeTotal-runeKept);}
 	public int getRuns() {return runs;}
 	
-	public void showRunningTotalsOld() {
-		System.out.println("-------------------------------------");
-		System.out.println("Number of Runs: " + runs + "		Energy from drops: " + energy + "		Crystals from drops: " + crystals);
-		System.out.println("Mana from drops: " + mana + "		Mana from selling runes: " + manaFromSelling + "	Total mana: " + manaTotal );
-		System.out.println("Unknown Scrolls: " + unknownScrolls + "		Mystical Scrolls: " + mysticScrolls);
-		System.out.println("Symbols of Harmony: " + symbolH + "		Symbols of Transcendence: " + symbolT + "	Symbols of Chaos: " + symbolC);
-		System.out.println("Rune Pieces: " + runePieces + "			Shape Shifting Stones: " + shapeShifting);
-		System.out.println("3-Star Rainbowmons: " + rainbow3 + " 		2-Star Rainbowmons: " + rainbow2);
-		System.out.println("Rune Drops: " + runeTotal + " 			Runes Kept: " + runeKept);
+	private void writeToLog(String str) {
+		try {
+			File log = new File("log.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(log));
+			if(!log.exists()) {
+				log.createNewFile();
+			}			
+			writer.write(str + "\n");
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}
-	
 	public void showRunningTotals() {
 				
 		System.out.println("----------Running Totals-------------");

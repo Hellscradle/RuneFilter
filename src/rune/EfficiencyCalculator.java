@@ -70,17 +70,18 @@ public class EfficiencyCalculator {
 		float tmpAdd = 0f;
 		if(lvl < 3) {
 			tmpAdd += 0.8;
-		}else if(lvl > 3 && lvl < 6) {
+		}else if(lvl >= 3 && lvl < 6) {
 			tmpAdd += 0.6;
-		}else if(lvl > 6 && lvl < 9) {
+		}else if(lvl >= 6 && lvl < 9) {
 			tmpAdd += 0.4;
-		}else if(lvl > 9 && lvl < 12) {
+		}else if(lvl >= 9 && lvl < 12) {
 			tmpAdd += 0.2;
 		}
+		// isolated the problem - this calculation is not on swarfarm
+		// calculation based on a "high average" of the difference in % a 5* rune can roll.
 		if(grade == 5) {
 			tmpAdd = tmpAdd*0.82f;
 		}
-		
 		eff = ((subTotal + tmpAdd)+runeGradeMulti)/(2.8f);
 		
 		return eff;

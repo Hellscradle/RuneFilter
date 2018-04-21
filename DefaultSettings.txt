@@ -1,0 +1,4 @@
+##### Location of account .json file #####
+C:\Programs\RuneFilter\Account-19884943.json
+##### Location of account .csv live runtime file #####
+C:\Programs\RuneFilter\Account-19884943-runs.csv

@@ -16,9 +16,9 @@ public class PredefinedFilter {
 	public boolean checkRune(Rune rune) {
 		//check if legendary or at least a 6* Hero rune. Returns true if it is
 		
-		if(filter.isRarity(rune, Rarity.LEGEND) && rune.getRuneMaxEff() > 0.85f) {
+		if(filter.isRarity(rune, Rarity.LEGEND) && rune.getRuneMaxEff() > 0.78f) {
 			return true;	
-		}else if(filter.isRarity(rune, Rarity.HERO) && filter.isGrade(rune, 6, 6) && rune.getRuneMaxEff() > 0.85f) {
+		}else if(filter.isRarity(rune, Rarity.HERO) && filter.isGrade(rune, 6, 6) && rune.getRuneMaxEff() > 0.78f) {
 			return true;
 		}else {
 			return false;
@@ -118,7 +118,7 @@ public class PredefinedFilter {
 				if(filter.hasSubStat(rune, StatEnum.CRITRATE)) {
 					counter++;
 				}
-				if(counter >= 2) {
+				if(counter >= 3) {
 					syn = true;
 				}
 			}
@@ -310,7 +310,7 @@ public class PredefinedFilter {
 				counter++;
 			}
 
-			if(counter >= 4) {
+			if(counter >= 3) {
 				syn = true;
 			}
 		}else if(slotID==4 && filter.hasPrimaryStat(rune, StatEnum.CRITDAMAGE)) {
@@ -329,10 +329,10 @@ public class PredefinedFilter {
 			if(filter.hasSubStat(rune, StatEnum.SPD)) {
 				counter++;
 			}
-			if(counter >= 4) {
+			if(counter >= 3) {
 				syn = true;
 			}
-		}else if(slotID == 2 || slotID == 4){
+		}else if(slotID == 2 || slotID == 6){
 			if(filter.hasSubStat(rune, StatEnum.HPPERCENT)) {
 				counter++;
 			}
@@ -351,7 +351,7 @@ public class PredefinedFilter {
 			if(filter.hasSubStat(rune, StatEnum.SPD)) {
 				counter++;
 			}
-			if(counter >= 4) {
+			if(counter >= 3) {
 				syn = true;
 			}
 		}

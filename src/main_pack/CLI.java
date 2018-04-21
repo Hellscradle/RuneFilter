@@ -85,8 +85,26 @@ public class CLI {
 		int displayLevel = sc.nextInt();
 		sc.nextLine();
 		
-		System.out.println("Starting Live Runtime Filter");
-		LiveRuneReader lrr = new LiveRuneReader(true,false,displayLevel);
+		if(displayLevel == 0) { displayMainMenu();}
+		
+		System.out.println("----Runtime Filter Settings----");
+		System.out.println("1 - Create Keep/Sell Log");
+		System.out.println("2 - No Log");
+		System.out.println("0 - Back");
+		boolean write;
+		int writeToFile = sc.nextInt();
+		sc.nextLine();
+		
+		if (writeToFile == 0) { runtimeRuneFilter();}
+		
+		if(writeToFile == 1) {
+			write = true;
+		}else {
+			write = false;
+		}
+		
+		System.out.println("### Starting Live Runtime Filter ###");
+		LiveRuneReader lrr = new LiveRuneReader(true,false,displayLevel,write);
 		lrr.startTimer();
 	}
 	
@@ -145,8 +163,9 @@ public class CLI {
 	
 	private void analyzeSettings() {
 		int runeView = settingsView();
+		if(runeView == 0) { displayMainMenu();}
 		int equippedView = settingsEquipped();
-		if(runeView == 0 || equippedView == 0) {analyzeSettings();}
+		if(equippedView == 0) {analyzeSettings();}
 		analyzeRunes(runeView,equippedView);
 	}
 	
@@ -158,12 +177,23 @@ public class CLI {
 		}
 	}
 	
+	
 	private void analyzeRunes(int view, int equipped) {
 		System.out.println("-----Analyzing Runes-----");
 		RuneImporter ri = new RuneImporter(jsonLocation);
 		List<Rune> runeList = ri.runeList;
 		List<Rune> displayList = new ArrayList<Rune>();
 		List<Rune> finalList = new ArrayList<Rune>();
+		float avgCurrent = 0;
+		float avgMax = 0;
+		//Gets the Average of the rune efficiencies
+		for(int i=0; i<runeList.size();i++) {
+			avgCurrent += runeList.get(i).getRuneEfficiency();
+			avgMax += runeList.get(i).getRuneMaxEff();
+		}
+		avgCurrent = (avgCurrent/runeList.size());
+		avgMax = (avgMax/runeList.size());
+		
 		
 		if(view == 1) {
 			for(int i=0; i<runeList.size();i++) {
@@ -204,6 +234,9 @@ public class CLI {
 				displayList.get(i).displayRune();
 			}
 		}
+		
+		System.out.println("Current Average Efficiency: " + avgCurrent);
+		System.out.println("Current Average Max: " + avgMax);
 		
 	}
 	
@@ -259,11 +292,10 @@ public class CLI {
 				configureSettings();
 				break;
 		}
-		
 	}
 	
 	private void pickFilter() {
-		System.out.println("1 - Predifined Filter");
+		System.out.println("1 - Predifined Filter - Currently Required");
 		System.out.println("2 - Filter File - pick location");
 		System.out.println("0 - Back");
 		int x = sc.nextInt();
@@ -281,8 +313,5 @@ public class CLI {
 				pickFilter();
 				break;
 		}
-
 	}
-	
-	
 }
